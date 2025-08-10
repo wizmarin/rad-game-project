@@ -60,6 +60,7 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             body.AddForce(jumpForce * Vector3.up, ForceMode.Impulse);
+            player.ResetTrigger("Land");
             player.SetTrigger("Jump");
         }
         else
@@ -68,5 +69,13 @@ public class Movement : MonoBehaviour
         }
 
         transform.position += speed * transform.forward * Time.deltaTime;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Floor")
+        {
+            player.SetTrigger("Land");
+        }
     }
 }
