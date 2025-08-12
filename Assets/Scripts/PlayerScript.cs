@@ -6,15 +6,17 @@ public class PlayerScript : MonoBehaviour
 {
     Animator player;
     Rigidbody body;
+    public GameObject bulletClone;
+    public Transform bulletSpawn;
 
-    float speed;
-    float walkSpeed = 3;
-    float runMultiplier = 3;
-    float turningSpeed = 180;
+    private float speed;
+    private float walkSpeed = 3;
+    private float runMultiplier = 3;
+    private float turningSpeed = 180;
 
-    float jumpForce = 10;
+    private float jumpForce = 10;
 
-    int CHP = 100;
+    private int CHP = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +73,12 @@ public class PlayerScript : MonoBehaviour
         }
 
         transform.position += speed * transform.forward * Time.deltaTime;
+        
+        if (Input.GetMouseButtonDown(0))
+        {
+            player.ResetTrigger("Shoot");
+            player.SetTrigger("Shoot");
+        }
     }
 
     internal void takeDamage(int damage)
