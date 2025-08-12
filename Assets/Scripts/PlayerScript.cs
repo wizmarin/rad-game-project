@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class PlayerScript : MonoBehaviour
 {
     Animator player;
     Rigidbody body;
@@ -12,7 +12,9 @@ public class Movement : MonoBehaviour
     float runMultiplier = 3;
     float turningSpeed = 180;
 
-    float jumpForce = 0.5f;
+    float jumpForce = 10;
+
+    int CHP = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -57,18 +59,28 @@ public class Movement : MonoBehaviour
             player.SetBool("IsRunning", false);
         }
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            body.AddForce(jumpForce * Vector3.up, ForceMode.Impulse);
+            body.AddForce(jumpForce * Vector3.up, ForceMode.VelocityChange);
             player.ResetTrigger("Land");
             player.SetTrigger("Jump");
         }
-        else
+        else if (Input.GetKeyUp(KeyCode.Space))
         {
             player.ResetTrigger("Jump");
         }
 
         transform.position += speed * transform.forward * Time.deltaTime;
+    }
+
+    internal void takeDamage(int damage)
+    {
+        CHP -= damage;
+        if (CHP <= 0)
+        {
+            player.SetTrigger("Die");
+            Destroy(gameObject, 5f);
+        }
     }
 
     void OnCollisionEnter(Collision collision)

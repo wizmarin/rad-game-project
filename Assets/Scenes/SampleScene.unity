@@ -174,6 +174,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 9187343066701982198, guid: 4198e2587d1fcca4cb87c16c3cfed34d, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -311,8 +315,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 4, z: 3}
-  m_Center: {x: 0, y: 2, z: 0.5}
+  m_Size: {x: 3, y: 3, z: 3}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!54 &746129964
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -352,8 +356,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac858ebb9bcc454184c5111ce5517d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  victim: {fileID: 568852085}
-  target: {fileID: 850687232}
 --- !u!1001 &850687231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -493,7 +495,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 4.5, z: 2}
+  m_Size: {x: 3, y: 4.5, z: 3}
   m_Center: {x: 0, y: 2, z: 0.3}
 --- !u!1 &963194225
 GameObject:
